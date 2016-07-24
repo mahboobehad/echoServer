@@ -1,2 +1,2 @@
 # echoServer
-a simple echo server 
+mostly taken from Foundations of Python network programming, by John Goerzen 
