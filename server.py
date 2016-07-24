@@ -10,14 +10,14 @@ class Server(asyncio.Protocol):
         print('Accepted connection from {}'.format(self.address))
 
     def data_received(self, data):
-        self.data += data
+        message = data.decode()
+        print('Data received: {!r}'.format(message))
 
-        if self.data.endswith(b'?'):
+        print('Send: {!r}'.format(message))
+        self.transport.write(data)
 
-            self.transport.write(self.data)
-
-            #send answer to client!
-            self.data = b''
+        print('Close the client socket')
+        self.transport.close()
 
     def connection_lost(self, exc):
         if exc:

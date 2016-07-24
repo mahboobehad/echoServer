@@ -1,4 +1,4 @@
-from socket import *
+
 import argparse
 
 def parse_command_line(description):
@@ -11,18 +11,5 @@ def parse_command_line(description):
     args = parser.parse_args()
     address = (args.host, args.p)
     return address
-
-def recv_until(sock, suffix):
-    """Receive bytes over socket `sock` until we receive the `suffix`."""
-    socket.getpeername()
-    message = sock.recv(1096)
-    if not message:
-     raise EOFError('socket closed')
-    while not message.endswith(suffix):
-     data = sock.recv(1096)
-    if not data:
-     raise IOError('received {!r} then socket closed'.format(message))
-    message += data
-    return message
 
 #logging tools :-"

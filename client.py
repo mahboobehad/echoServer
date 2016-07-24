@@ -1,7 +1,5 @@
 
 import utils
-from socket import *
-
 import asyncio
 
 class EchoClientProtocol(asyncio.Protocol):
@@ -27,7 +25,7 @@ if __name__ == '__main__':
     address = utils.parse_command_line('client')
     loop = asyncio.get_event_loop()
     message = input('Enter your message to server: ')
-    coro = loop.create_connection(lambda: EchoClientProtocol(message, loop), '127.0.0.1', 8888)
+    coro = loop.create_connection(lambda: EchoClientProtocol(message, loop), address[0] , address[1])
     loop.run_until_complete(coro)
     loop.run_forever()
     loop.close()
